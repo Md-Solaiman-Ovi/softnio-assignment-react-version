@@ -54,3 +54,6 @@ This will open the project in your default web browser at `http://localhost:3000
 - Open the project files in VS Code.
 - Make changes to the code (e.g., in the `src` folder).
 - The browser will automatically refresh to reflect your changes.
+  
+### 5. Live Preview Link
+- I wanted to sincerely apologize for not being able to share the live preview of my project as planned. Unfortunately, I'm currently facing some build issues that are preventing the deployment from completing successfully on Vercel. Despite my best efforts to resolve them, the deployment keeps failing.
