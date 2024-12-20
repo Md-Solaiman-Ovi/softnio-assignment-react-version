@@ -15,9 +15,7 @@ const ProductDetails = ({
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [quantity, setQuantity] = useState<number>(1);
-  const handleOpen = () => {
-    dispatch(openCartModal());
-  };
+
   const sizePrices: { [key: string]: number } = {
     S: 69,
     M: 79,
@@ -28,15 +26,16 @@ const ProductDetails = ({
   const handleAddToCart = () => {
     const item = {
       id: "1", // This can be dynamic if you have a product ID
-      name: "Smart Watch",
+      name: "Classy Modern Smart Watch",
       color: selectedColor,
       size: selectedSize,
-      quantity: quantity,
+      quantity,
       price: sizePrices[selectedSize],
       totalPrice: sizePrices[selectedSize] * quantity, // Calculate total price
     };
 
     dispatch(addItemToModal(item)); // Dispatch item to modal cart
+    dispatch(openCartModal()); // Open the cart modal
   };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
@@ -145,13 +144,14 @@ const ProductDetails = ({
           Add to Cart
         </button>
       </div>
-      {/* <!-- Floating Checkout Button --> */}
+
+      {/* Floating Checkout Button */}
       <div className="fixed bottom-10 hidden md:block">
         <button
-          onClick={handleOpen}
+          onClick={() => dispatch(openCartModal())}
           className="bg-[rgba(255,187,90,1)] text-black px-6 py-3 rounded-full shadow-lg"
         >
-          Checkout <span className="bg-white px-1 rounded text-center ">0</span>
+          Checkout
         </button>
       </div>
 

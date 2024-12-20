@@ -5,9 +5,15 @@ import Img3 from "../assets/watch-black.jpg";
 
 interface ProductImageProps {
   selectedColor: string;
+  cssClass: string;
+  imgClass: string;
 }
 
-const ProductImage = ({ selectedColor }: ProductImageProps) => {
+const ProductImage = ({
+  selectedColor,
+  cssClass,
+  imgClass,
+}: ProductImageProps) => {
   // Define the product images for each color
   const productImages: { [key: string]: string } = {
     purple: Img1,
@@ -17,11 +23,11 @@ const ProductImage = ({ selectedColor }: ProductImageProps) => {
   return (
     <>
       {/* Product Image */}
-      <div className="w-full md:w-1/2 py-0 lg:py-36 h-full">
+      <div className={`${cssClass} `}>
         <img
           src={productImages[selectedColor]}
           alt={`Smartwatch in ${selectedColor}`}
-          className="rounded shadow-md h-full object-cover"
+          className={`rounded shadow-md object-cover ${imgClass}`}
         />
       </div>
     </>
