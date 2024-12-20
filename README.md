@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Running a React Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide explains how to run a React project in VS Code, starting from cloning a GitHub repository to launching the app in a browser.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install [Node.js](https://nodejs.org/) (which includes npm).
+2. Install Git from [git-scm.com](https://git-scm.com/).
+3. Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/).
 
-## Expanding the ESLint configuration
+## Steps to Run the Project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. Clone the Repository
 
-- Configure the top-level `parserOptions` property like this:
+1. Open VS Code.
+2. Open the Terminal in VS Code.
+3. Navigate to the folder where you want to clone the project:
+   ```bash
+   cd <desired-folder>
+   ```
+  
+4. Clone the repository using Git:
+   ```bash
+   git clone git@github.com:Md-Solaiman-Ovi/softnio-assignment-react-version.git
+   ```
+   
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 2. Navigate to the Project Directory
+
+Move into the cloned project folder:
+```bash
+cd softnio-assignment-react-version
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 3. Install Dependencies
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Run the following command to install the required dependencies:
+```bash
+pnpm install
 ```
+This will download and set up all the libraries and modules listed in the `package.json` file.
+
+### 4. Start the Development Server
+
+Start the React development server by running:
+```bash
+pnpm run dev
+```
+This will open the project in your default web browser at `http://localhost:3000`.
+
+### 5. View Live Changes
+
+- Open the project files in VS Code.
+- Make changes to the code (e.g., in the `src` folder).
+- The browser will automatically refresh to reflect your changes.
