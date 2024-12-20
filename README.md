@@ -21,7 +21,7 @@ This guide explains how to run a React project in VS Code, starting from cloning
   
 4. Clone the repository using Git:
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:Md-Solaiman-Ovi/softnio-assignment-react-version.git
    ```
    
 
@@ -29,7 +29,7 @@ This guide explains how to run a React project in VS Code, starting from cloning
 
 Move into the cloned project folder:
 ```bash
-cd <repository-folder>
+cd softnio-assignment-react-version
 ```
 
 
