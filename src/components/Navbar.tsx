@@ -1,23 +1,32 @@
 import React from "react";
-// import { useSelector } from "react-redux";
-// import { RootState } from "../redux/store";
-
+import { CartModalData } from "./CartModal";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import icon from "../assets/checkoutIcon.png";
+import { openCartModal } from "../redux/cartModalSlice";
 const Navbar: React.FC = () => {
-  // const totalItems = useSelector((state: RootState) => state.cart.items.length);
+  const cartItems = useSelector((state: RootState) => state.cartModal.items);
+  const dispatch = useDispatch();
+  // Calculate the total quantity of all items in the cart
+  const getTotalQuantity = () => {
+    return cartItems.reduce(
+      (total: number, item: CartModalData) => total + item.quantity,
+      0
+    );
+  };
 
   return (
     <div className="flex items-center justify-between px-4 py-2 bg-gray-300 w-full md:hidden sticky top-0">
       <div>Navbar</div>
-      <button className="px-5 py-2 flex w-full">
+      <button
+        className="px-5 py-2 flex w-full"
+        onClick={() => dispatch(openCartModal())}
+      >
         <div className="flex">
-          <img
-            src="/assets/checkoutIcon.png"
-            alt="checkoutIcon"
-            className="size-7"
-          />
+          <img src={icon} alt="checkoutIcon" className="size-7" />
         </div>
-        <span className="cart-count bg-red-500 text-white size-5 rounded-full text-center flex items-center justify-center text-xs">
-          {/* {totalItems} */}
+        <span className=" bg-red-500 text-white size-5 rounded-full text-center flex items-center justify-center text-xs">
+          {getTotalQuantity()}
         </span>
       </button>
     </div>

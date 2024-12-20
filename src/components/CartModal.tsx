@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeCartModal } from "../redux/cartModalSlice"; // Import actions
 import { RootState } from "../redux/store";
 import ProductImage from "./ProductImage";
-interface CartModalData {
+export interface CartModalData {
   id: string;
   name: string;
   color: string;

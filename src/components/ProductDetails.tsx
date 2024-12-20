@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToModal, openCartModal } from "../redux/cartModalSlice"; // Import the actions
-import CartModal from "./CartModal"; // Import the CartModal component
+import CartModal, { CartModalData } from "./CartModal"; // Import the CartModal component
+import { RootState } from "../redux/store";
 
 interface ProductDetailsProps {
   selectedColor: string;
@@ -12,9 +13,17 @@ const ProductDetails = ({
   selectedColor,
   setSelectedColor,
 }: ProductDetailsProps) => {
-  const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [quantity, setQuantity] = useState<number>(1);
+  const cartItems = useSelector((state: RootState) => state.cartModal.items);
+  const dispatch = useDispatch();
+  // Calculate the total quantity of all items in the cart
+  const getTotalQuantity = () => {
+    return cartItems.reduce(
+      (total: number, item: CartModalData) => total + item.quantity,
+      0
+    );
+  };
 
   const sizePrices: { [key: string]: number } = {
     S: 69,
@@ -35,7 +44,6 @@ const ProductDetails = ({
     };
 
     dispatch(addItemToModal(item)); // Dispatch item to modal cart
-    dispatch(openCartModal()); // Open the cart modal
   };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
@@ -151,7 +159,10 @@ const ProductDetails = ({
           onClick={() => dispatch(openCartModal())}
           className="bg-[rgba(255,187,90,1)] text-black px-6 py-3 rounded-full shadow-lg"
         >
-          Checkout
+          Checkout{" "}
+          <span className="bg-white px-1 rounded text-center">
+            {getTotalQuantity()}
+          </span>
         </button>
       </div>
 
